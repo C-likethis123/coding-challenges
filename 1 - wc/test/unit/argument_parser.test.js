@@ -61,6 +61,11 @@ describe("ArgumentParser - Options", () => {
             isWordCount: true,
         });
     });
+
+    test("wc - illegal options", () => {
+        const testArgumentParser = new ArgumentParser();
+        expect(() => testArgumentParser.parseArgs(["-c,"])).toThrow("illegal option -c,");
+    });
 });
 
 describe("Argument Parser - Files", () => {

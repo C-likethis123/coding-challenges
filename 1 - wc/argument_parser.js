@@ -21,7 +21,8 @@ class ArgumentParser {
         for (const arg of args) {
             if (arg.startsWith(FLAG_PREFIX)) {
                 hasOptions = true;
-                for (const option of arg) {
+                for (let i = 1; i < arg.length; i++) {
+                    let option = arg[i];
                     if (option === "c") {
                         options.isByteCount = true;
                     } else if (option === "l") { 
