@@ -6,27 +6,29 @@ import FileResults from "./file_results.js";
 function main() {
     const ArgParser = new ArgumentParser();
     const args = process.argv.slice(2);
-    ArgParser.parseArgs(args);
-
-    // TODO: add error handling during parsing arguments here
+    try {
+        ArgParser.parseArgs(args);
     
-    const files = ArgParser.files;
-    const hasMultipleFiles = files.length > 1;
-    const total = new FileResults("total");
-    Promise.all(files.map(async (file) => {
-        const charStream = await getCharactersFromFile(file);
-        const results = computeResultsOptions(ArgParser.options, charStream, file);
-        results.print();
-        if (hasMultipleFiles) {
-            total.addFileResults(results);
-        }
-    }))
-    .then(() => {
-        if (hasMultipleFiles) {
-            total.print();
-        }
-    })
-    .catch((err) => console.error(err))
+        const files = ArgParser.files;
+        const hasMultipleFiles = files.length > 1;
+        const total = new FileResults("total");
+        Promise.all(files.map(async (file) => {
+            const charStream = await getCharactersFromFile(file);
+            const results = computeResultsOptions(ArgParser.options, charStream, file);
+            results.print();
+            if (hasMultipleFiles) {
+                total.addFileResults(results);
+            }
+        }))
+        .then(() => {
+            if (hasMultipleFiles) {
+                total.print();
+            }
+        })
+        .catch((err) => console.error(err))
+    } catch (error) {
+       console.error(error.message); 
+    }
 }
 
 main();

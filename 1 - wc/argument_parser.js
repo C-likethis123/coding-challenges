@@ -24,12 +24,12 @@ class ArgumentParser {
                 for (const option of arg) {
                     if (option === "c") {
                         options.isByteCount = true;
-                    }
-                    if (option === "l") {
+                    } else if (option === "l") { 
                         options.isLineCount = true;
-                    }
-                    if (option === "w") {
+                    } else if (option === "w") {
                         options.isWordCount = true;
+                    } else {
+                        throw new Error(`illegal option ${arg}`);
                     }
                 }
             } else {

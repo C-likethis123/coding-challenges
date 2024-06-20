@@ -40,7 +40,7 @@ describe("ArgumentParser - Options", () => {
 
     test("wc - multiple options in different tokens", () => {
         const testArgumentParser = new ArgumentParser();
-        testArgumentParser.parseArgs(["-c,-l"]);
+        testArgumentParser.parseArgs(["-c","-l"]);
 
         expect(testArgumentParser.files).toStrictEqual([STDIN]);
         expect(testArgumentParser.options).toStrictEqual({
@@ -81,7 +81,7 @@ describe("Argument Parser - Files", () => {
 describe("Argument Parser - Files and Options", () => {
     test("Multiple file names with options", () => {
         const testArgumentParser = new ArgumentParser();
-        testArgumentParser.parseArgs(["-c","test.txt","-l","file1.txt"]);
+        testArgumentParser.parseArgs(["-c", "test.txt", "-l", "file1.txt"]);
 
         expect(testArgumentParser.files).toStrictEqual(["test.txt", "file1.txt"]);
         expect(testArgumentParser.options).toStrictEqual({
