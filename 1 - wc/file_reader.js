@@ -42,7 +42,6 @@ async function readFile(fileName) {
 export async function getCharactersFromFile(fileName) {
     if (fileName === STDIN) {
         return await readStdin();
-    } else {
-        return await readFile(fileName);
     }
+    return await readFile(fileName);
 }
