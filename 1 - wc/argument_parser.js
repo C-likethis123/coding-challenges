@@ -6,9 +6,8 @@ class ArgumentParser {
         isByteCount: true,
         isWordCount: true,
     }
-    // TODO: implement multiline count?
     files = [];
-    constructor() {}
+
     parseArgs(args) {
         // TODO: seems ugly to implement a default OPTIONS, then override it with an option later.
         // is there a more elegant construct?

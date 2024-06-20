@@ -1,4 +1,4 @@
-import { computeByteCount, computeLineCount, computeResultsOptions, computeWordCount } from "../../compute";
+import { computeByteCount, computeLineCount, computeResults, computeWordCount } from "../../compute";
 
 /**
  * TODO: Logic is difficult to unit test
@@ -7,7 +7,7 @@ import { computeByteCount, computeLineCount, computeResultsOptions, computeWordC
  * 
  * exporting the compute[] functions for unit testing.
  * but i personally think the only interface that should be exposed is
- * 'computeResultsOptions
+ * 'computeResults
  */
 describe('computeLineCount', () => {
     test('single line files returns 0', () => {
@@ -61,13 +61,13 @@ describe('computeWordCount', () => {
     });
 });
 
-describe('computeResultsOptions', () => {
+describe('computeResults', () => {
     test('adds according to options', () => {
         const options = {
             isLineCount: true,
         };
         const input = 'this is a line\n'
-        const { results } = computeResultsOptions(options, input, "test_input")
+        const { results } = computeResults(options, input, "test_input")
         expect(results.lineResults).toBe(1);
     })
 })

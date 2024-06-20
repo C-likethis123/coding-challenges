@@ -1,6 +1,6 @@
 import ArgumentParser from "./argument_parser.js";
 import { getCharactersFromFile } from "./file_reader.js";
-import { computeResultsOptions } from "./compute.js";
+import { computeResults } from "./compute.js";
 import FileResults from "./file_results.js";
 
 function main() {
@@ -14,7 +14,7 @@ function main() {
         const total = new FileResults("total");
         Promise.all(files.map(async (file) => {
             const charStream = await getCharactersFromFile(file);
-            const results = computeResultsOptions(ArgParser.options, charStream, file);
+            const results = computeResults(ArgParser.options, charStream, file);
             results.print();
             if (hasMultipleFiles) {
                 total.addFileResults(results);

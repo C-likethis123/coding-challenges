@@ -27,11 +27,12 @@ export function computeWordCount(charStream) {
 }
 
 /**
- * @param {ArgOptions} returns file options and a list of files
+ * @param {ArgOptions} a list of options related to the app
+ * @param {charStream} file contents
+ * @param {string} file name
  * @returns {FileResult} that indicates file options
  */
-// TODO: remove the unneeded filename
-export function computeResultsOptions(options, charStream, fileName) {
+export function computeResults(options, charStream, fileName) {
     const results = new FileResults(fileName);
     if (options.isLineCount) {
         results.addLineResults(computeLineCount(charStream));
